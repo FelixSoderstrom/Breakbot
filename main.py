@@ -6,10 +6,12 @@ import os
 """
 """
 
-APP_ID = os.environ["teams_breakbot_ID"]
-APP_PASSWORD = os.environ["teams_breakbot_SECRET"]
-# APP_ID = ""
-# APP_PASSWORD = ""
+APP_ID = os.environ.get("teams_breakbot_ID")
+APP_PASSWORD = os.environ.get("teams_breakbot_SECRET")
+
+if not APP_ID or not APP_PASSWORD:
+    raise ValueError("Missing APP_IS or APP_PASSWORD environment variables.")
+
 SETTINGS = BotFrameworkAdapterSettings(APP_ID, APP_PASSWORD)
 ADAPTER = BotFrameworkAdapter(SETTINGS)
 BOT = ChatHandler()
@@ -32,7 +34,7 @@ APP.router.add_post("/api/messages", messages)
 
 if __name__ == "__main__":
     try:
-        web.run_app(APP)
+        web.run_app(APP, port=8000)
     except Exception as e:
         print(f"Error with: {e}")
         raise e
