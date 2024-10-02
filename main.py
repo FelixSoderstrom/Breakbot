@@ -19,7 +19,7 @@ ADAPTER = BotFrameworkAdapter(SETTINGS)
 BOT = ChatHandler()
 
 async def messages(req: web.Request) -> web.Response:
-    logger.info("Recieved a message...")
+    logger.info("RECIEVED A MESSAGE")
     if "application/json" in req.headers["Content-Type"]:
         body = await req.json()
     else:
