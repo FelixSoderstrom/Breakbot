@@ -3,8 +3,7 @@ from botbuilder.schema import Activity
 from aiohttp import web
 from chat import ChatHandler
 import os
-"""
-"""
+
 
 APP_ID = os.environ.get("teams_breakbot_ID")
 APP_PASSWORD = os.environ.get("teams_breakbot_SECRET")
