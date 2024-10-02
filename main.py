@@ -3,7 +3,10 @@ from botbuilder.schema import Activity
 from aiohttp import web
 from chat import ChatHandler
 import os
+import logging
 
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 APP_ID = os.environ.get("teams_breakbot_ID")
 APP_PASSWORD = os.environ.get("teams_breakbot_SECRET")
@@ -16,6 +19,7 @@ ADAPTER = BotFrameworkAdapter(SETTINGS)
 BOT = ChatHandler()
 
 async def messages(req: web.Request) -> web.Response:
+    logger.info("Recieved a message...")
     if "application/json" in req.headers["Content-Type"]:
         body = await req.json()
     else:
@@ -33,7 +37,9 @@ APP.router.add_post("/api/messages", messages)
 
 if __name__ == "__main__":
     try:
+        logger.error("Starting application...")
         web.run_app(APP, port=8080)
     except Exception as e:
         print(f"Error with: {e}")
+        logger.error(f"Error starting Breakbot... {e}")
         raise e
