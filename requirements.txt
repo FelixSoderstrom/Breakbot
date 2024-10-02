@@ -1,2 +1,2 @@
-botbuilder-core
-aiohttp
+botbuilder-core==4.16.2
+aiohttp==3.10.8
