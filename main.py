@@ -38,8 +38,9 @@ APP.router.add_post("/api/messages", messages)
 if __name__ == "__main__":
     try:
         logger.error("Starting application...")
-        web.run_app(APP, port=8080)
+        web.run_app(APP, port=8000)
     except Exception as e:
         print(f"Error with: {e}")
         logger.error(f"Error starting Breakbot... {e}")
         raise e
+    
