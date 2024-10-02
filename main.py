@@ -2,14 +2,14 @@ from botbuilder.core import BotFrameworkAdapter, BotFrameworkAdapterSettings
 from botbuilder.schema import Activity
 from aiohttp import web
 from chat import ChatHandler
-# import os
+import os
 """
 """
 
-# APP_ID = os.environ["teams_breakbot_ID"]
-# APP_PASSWORD = os.environ["teams_breakbot_SECRET"]
-APP_ID = ""
-APP_PASSWORD = ""
+APP_ID = os.environ["teams_breakbot_ID"]
+APP_PASSWORD = os.environ["teams_breakbot_SECRET"]
+# APP_ID = ""
+# APP_PASSWORD = ""
 SETTINGS = BotFrameworkAdapterSettings(APP_ID, APP_PASSWORD)
 ADAPTER = BotFrameworkAdapter(SETTINGS)
 BOT = ChatHandler()
@@ -32,7 +32,7 @@ APP.router.add_post("/api/messages", messages)
 
 if __name__ == "__main__":
     try:
-        web.run_app(APP, host="localhost", port=3978)
+        web.run_app(APP)
     except Exception as e:
         print(f"Error with: {e}")
         raise e

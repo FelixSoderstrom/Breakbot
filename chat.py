@@ -40,7 +40,9 @@ class ChatHandler(ActivityHandler):
         Jag har inte clearence. Ouch..
         """
         self.authorized_users = [
-            "User" # For BotFrameworkEmulator
+            "Tobias Fors",
+            "Amanda Mårtensson",
+            "Felix Söderström"
             ]
 
 

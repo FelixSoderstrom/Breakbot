@@ -14,6 +14,7 @@ Setup:
 
 Data Handling:
 This bot runs locally. It does not store any data beyond the current session.
+Collected data (sender name, timestamps and message text) are all used to identify authorized users, set timers and handle timers.
 
 
 Disclaimer:
