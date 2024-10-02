@@ -12,7 +12,7 @@ APP_ID = os.environ.get("teams_breakbot_ID")
 APP_PASSWORD = os.environ.get("teams_breakbot_SECRET")
 
 if not APP_ID or not APP_PASSWORD:
-    raise ValueError("Missing APP_IS or APP_PASSWORD environment variables.")
+    logger.error("MISSING ENVIRONMENT VARIABLES.")
 
 SETTINGS = BotFrameworkAdapterSettings(APP_ID, APP_PASSWORD)
 ADAPTER = BotFrameworkAdapter(SETTINGS)
@@ -37,10 +37,10 @@ APP.router.add_post("/api/messages", messages)
 
 if __name__ == "__main__":
     try:
-        logger.error("Starting application...")
+        logger.info("STARTING APPLICATION")
         web.run_app(APP, port=8000)
     except Exception as e:
         print(f"Error with: {e}")
-        logger.error(f"Error starting Breakbot... {e}")
+        logger.error(f"ERROR STARTING APPLICATION: {e}")
         raise e
     
