@@ -12,11 +12,16 @@ logger = logging.getLogger(__name__)
 
 APP_ID = os.environ.get("teams_breakbot_ID")
 APP_PASSWORD = os.environ.get("teams_breakbot_SECRET")
+TENANT_ID = os.environ.get("TENANT_ID")
 
 if not APP_ID or not APP_PASSWORD:
     logger.error("MISSING ENVIRONMENT VARIABLES.")
 
-SETTINGS = BotFrameworkAdapterSettings(APP_ID, APP_PASSWORD)
+SETTINGS = BotFrameworkAdapterSettings(
+    APP_ID,
+    APP_PASSWORD,
+    channel_auth_tenant=TENANT_ID
+)
 ADAPTER = BotFrameworkAdapter(SETTINGS)
 BOT = ChatHandler()
 
